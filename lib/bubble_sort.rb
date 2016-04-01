@@ -1,23 +1,29 @@
 class BubbleSort
 
-  def sort(unsorted, prev=0, cur=1, length=unsorted.length)
-    while length > 1
-      while cur < length
-        prev_val = unsorted[prev]
-        cur_val = unsorted[cur]
-        if prev_val > cur_val
-          unsorted[prev] = cur_val
-          unsorted[cur] = prev_val
-        end
-        prev += 1
-        cur += 1
-        unsorted
+  def sort(to_sort, first_position=0, second_position=1, sort_range=to_sort.length)
+    while sort_range > 0
+      while first_position + 1 < sort_range
+        swap_if_reversed(to_sort, first_position)
+        first_position += 1
+        #second_position += 1
+        to_sort
       end
-      length = length-1
-      prev = 0
-      cur = 1
+      sort_range = sort_range - 1
+      first_position = 0
+      #second_position = 1
     end
-    unsorted
+    to_sort
   end
+
+def swap_if_reversed(array, first_position)
+  first_value = array[first_position]
+  second_value = array[first_position + 1]
+  if first_value > second_value
+    array[first_position] = second_value
+    array[first_position + 1] = first_value
+  end
+end
+
+
 
 end
