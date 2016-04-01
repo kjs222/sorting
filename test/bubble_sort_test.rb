@@ -34,14 +34,18 @@ class BubbleSortTest < MiniTest::Test
 
     array3 = [0, -1, -10, 5]
     assert_equal [-10, -1, 0, 5], bubble.sort(array3)
-
   end
 
   def test_sorts_letters
     bubble = BubbleSort.new
     array1 = ["d", "c", "z", "r"]
     assert_equal ["c", "d", "r", "z"], bubble.sort(array1)
+  end
 
+  def test_sorts_empty
+    bubble = BubbleSort.new
+    array1 = []
+      assert_equal [], bubble.sort(array1)
   end
 
 
