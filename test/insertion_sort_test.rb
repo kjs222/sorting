@@ -43,6 +43,11 @@ class InsertionSortTest < MiniTest::Test
     sorter = InsertionSort.new
     array1 = ["d", "c", "z", "r"]
     assert_equal ["c", "d", "r", "z"], sorter.sort(array1)
+
+    array2 = ["d", "b", "a", "c"]
+    assert_equal ["a", "b", "c", "d"], sorter.sort(array2)
+
+
   end
 
 end
