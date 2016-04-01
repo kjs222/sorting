@@ -1,23 +1,24 @@
 class BubbleSort
 
-  def sort(to_sort, first_position=0, unsorted_area=to_sort.length)
+
+  def sort(to_sort, unsorted_area=to_sort.length)
     while unsorted_area > 0
-      while first_position + 1 < unsorted_area
-        swap_if_greater(to_sort, first_position)
-        first_position += 1
+      current_position = 0
+      while current_position + 1 < unsorted_area
+        swap_if_larger(to_sort, current_position)
+        current_position += 1
       end
       unsorted_area -= 1
-      first_position = 0
     end
     to_sort
   end
 
-  def swap_if_greater(array, first_position)
-    first_value = array[first_position]
-    second_value = array[first_position + 1]
-    if first_value > second_value
-      array[first_position] = second_value
-      array[first_position + 1] = first_value
+  def swap_if_larger(array, current_position)
+    current_value = array[current_position]
+    next_value = array[current_position + 1]
+    if current_value > next_value
+      array[current_position] = next_value
+      array[current_position + 1] = current_value
     end
   end
 

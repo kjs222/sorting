@@ -15,11 +15,9 @@ class InsertionSort
 
   def find_insertion_point(num, sorted)
     sorted.each_with_index do |sorted_num, index|
-      if num <= sorted_num
-        return index
-      end
+      return index if num <= sorted_num
     end
     return sorted.length
   end
-  
+
 end
