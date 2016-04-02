@@ -33,42 +33,59 @@ class MergeSortTest < MiniTest::Test
 
   end
 
-  def test_merges_two_sorted_lists
+  def test_merges_two_sorted_arrays
     sorter = MergeSort.new
     arr1 = [1, 2]
     arr2 = [3, 4]
-    assert_equal [1, 2, 3, 4], sorter.merge_split(arr1, arr2)
+    assert_equal [1, 2, 3, 4], sorter.merge(arr1, arr2)
 
     arr1 = [2, 2]
     arr2 = [1, 4]
-    assert_equal [1, 2, 2, 4], sorter.merge_split(arr1, arr2)
+    assert_equal [1, 2, 2, 4], sorter.merge(arr1, arr2)
 
     arr1 = [8]
     arr2 = [1]
-    assert_equal [1, 8], sorter.merge_split(arr1, arr2)
+    assert_equal [1, 8], sorter.merge(arr1, arr2)
 
     arr1 = [7, 8]
     arr2 = [1]
-    assert_equal [1, 7, 8], sorter.merge_split(arr1, arr2)
+    assert_equal [1, 7, 8], sorter.merge(arr1, arr2)
   end
 
 
+  def test_it_sorts_even_element_arrays
 
-  def test_it_sorts_4_element_array
-    skip
     sorter = MergeSort.new
-    arr1 = [4, 3, 2, 2]
-    assert_equal [2, 2, 3, 4], sorter.sort(arr1)
+    arr1 = [4, 0]
+    arr2 = [3, 4]
+    arr3 = [4, 3, 2, 2]
+    arr4 = [4, 3, 2, 2, 1, 8]
+    arr5 = [4, 3, 2, 2, 1, 1, 18, 8]
+    assert_equal [0, 4], sorter.sort(arr1)
+    assert_equal [3, 4], sorter.sort(arr2)
+    assert_equal [2, 2, 3, 4], sorter.sort(arr3)
+    assert_equal [1, 2, 2, 3, 4, 8], sorter.sort(arr4)
+    assert_equal [1, 1, 2, 2, 3, 4, 8, 18], sorter.sort(arr5)
 
   end
 
-  def test_it_sorts_3_element_array
+  def test_it_sorts_odd_element_arrays
+    sorter = MergeSort.new
+    arr3 = [4, 3, 2]
+    arr4 = [4, 3, 2, 2, 1]
+    arr5 = [4, 3, 2, 2, 1, 1, 18]
+    assert_equal [2, 3, 4], sorter.sort(arr3)
+    assert_equal [1, 2, 2, 3, 4], sorter.sort(arr4)
+    assert_equal [1, 1, 2, 2, 3, 4, 18], sorter.sort(arr5)
 
   end
 
-  def test_it_sorts_longer_array
-
+  def test_it_returns_empty_and_1_element_arrays
+    sorter = MergeSort.new
+    arr1 = [0]
+    arr2 = []
+    assert_equal [0], sorter.sort(arr1)
+    assert_equal [], sorter.sort(arr2)
   end
-
 
 end
