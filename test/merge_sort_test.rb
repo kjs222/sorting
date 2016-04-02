@@ -61,11 +61,13 @@ class MergeSortTest < MiniTest::Test
     arr3 = [4, 3, 2, 2]
     arr4 = [4, 3, 2, 2, 1, 8]
     arr5 = [4, 3, 2, 2, 1, 1, 18, 8]
+    arr6 = ["d", "b", "a", "c"]
     assert_equal [0, 4], sorter.sort(arr1)
     assert_equal [3, 4], sorter.sort(arr2)
     assert_equal [2, 2, 3, 4], sorter.sort(arr3)
     assert_equal [1, 2, 2, 3, 4, 8], sorter.sort(arr4)
     assert_equal [1, 1, 2, 2, 3, 4, 8, 18], sorter.sort(arr5)
+    assert_equal ["a", "b", "c", "d"], sorter.sort(arr6)
 
   end
 
@@ -74,9 +76,11 @@ class MergeSortTest < MiniTest::Test
     arr3 = [4, 3, 2]
     arr4 = [4, 3, 2, 2, 1]
     arr5 = [4, 3, 2, 2, 1, 1, 18]
+    arr6 = ["d", "b", "a", "c", "f"]
     assert_equal [2, 3, 4], sorter.sort(arr3)
     assert_equal [1, 2, 2, 3, 4], sorter.sort(arr4)
     assert_equal [1, 1, 2, 2, 3, 4, 18], sorter.sort(arr5)
+    assert_equal ["a", "b", "c", "d", "f"], sorter.sort(arr6)
 
   end
 

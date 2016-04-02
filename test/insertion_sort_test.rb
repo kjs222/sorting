@@ -47,7 +47,16 @@ class InsertionSortTest < MiniTest::Test
     array2 = ["d", "b", "a", "c"]
     assert_equal ["a", "b", "c", "d"], sorter.sort(array2)
 
-
   end
+
+  def test_it_returns_empty_and_1_element_arrays
+    sorter = InsertionSort.new
+    arr1 = [0]
+    arr2 = []
+    assert_equal [0], sorter.sort(arr1)
+    assert_equal [], sorter.sort(arr2)
+  end
+
+
 
 end

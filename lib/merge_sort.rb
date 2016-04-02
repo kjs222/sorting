@@ -1,8 +1,7 @@
 class MergeSort
 
-
   def sort(array, merged = [])
-    if array.size <= 1
+    if array.size <= 1 || array.nil?
       return array
     else
       left, right = split(array)
@@ -60,29 +59,4 @@ class MergeSort
     merged
   end
 
-
-
-
 end
-
-sorter = MergeSort.new
-arr1 = [4, 3, 2, 1]
-p sorter.sort(arr1)
-
-arr2 = [4, 3, 2, 2, 1, 7, 10, 8]
-p sorter.sort(arr2)
-
-arr2 = [4, 3, 2, 2, 1, -9, 7]
-p sorter.sort(arr2)
-
-# arr1 = [4, 3]
-# p sorter.sort_split(arr1)
-#
-# arr2 = [4, 1]
-# p sorter.sort_split(arr2)
-#
-# arr3 = [1, 1]
-# p sorter.sort_split(arr3)
-#
-# arr4 = [1, 2]
-# p sorter.sort_split(arr4)

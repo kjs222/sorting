@@ -45,7 +45,7 @@ class BubbleSortTest < MiniTest::Test
   def test_sorts_empty
     bubble = BubbleSort.new
     array1 = []
-      assert_equal [], bubble.sort(array1)
+    assert_equal [], bubble.sort(array1)
   end
 
 
