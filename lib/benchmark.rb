@@ -20,29 +20,34 @@ module SortingSuite
       bubble_time = timer(SortingSuite::BubbleSort, test_array)
       insertion_time =  timer(SortingSuite::InsertionSort, test_array)
       merge_time =  timer(SortingSuite::MergeSort, test_array)
-      return bubble_time, insertion_time, merge_time
+      selection_time = timer(SortingSuite::SelectionSort, test_array)
+      return bubble_time, insertion_time, merge_time, selection_time
     end
 
     #consider send to consolidate fastest/slowest
     def fastest(test_array)
-      bubble_time, insertion_time, merge_time = time_all(test_array)
-      if bubble_time <= insertion_time && bubble_time <= merge_time
+      bubble_time, insertion_time, merge_time, selection_time= time_all(test_array)
+      if bubble_time <= insertion_time && bubble_time <= merge_time &&  bubble_time <= selection_time
         puts "BubbleSort is the fastest."
-      elsif insertion_time <= bubble_time && insertion_time <= merge_time
+      elsif insertion_time <= bubble_time && insertion_time <= merge_time &&  insertion_time <= selection_time
         puts "InsertionSort is the fastest."
-      else
+      elsif merge_time <= bubble_time && merge_time <= insertion_time &&  merge_time <= selection_time
         puts "MergeSort is the fastest"
+      else
+        puts "SelectionSort is the fastest"
       end
     end
 
     def slowest(test_array)
       bubble_time, insertion_time, merge_time = time_all(test_array)
-      if bubble_time >= insertion_time && bubble_time >= merge_time
+      if bubble_time >= insertion_time && bubble_time >= merge_time &&  bubble_time >= selection_time
         puts "BubbleSort is the slowest."
-      elsif insertion_time >= bubble_time && insertion_time >= merge_time
+      elsif insertion_time >= bubble_time && insertion_time >= merge_time &&  insertion_time >= selection_time
         puts "InsertionSort is the slowest."
-      else
+      elsif merge_time >= bubble_time && merge_time >= insertion_time &&  merge_time >= selection_time
         puts "MergeSort is the slowest"
+      else
+        puts "SelectionSort is the slowest"
       end
     end
 

@@ -31,56 +31,39 @@ class SelectionSortTest < MiniTest::Test
     array1 = [2, 1]
     array2 = [1, 2]
     assert_equal [1, 2], sorter.sort(array1)
-    assert_equal [1, 2], sorter.sort(array1)
+    assert_equal [1, 2], sorter.sort(array2)
   end
 
+  def test_sorts_variety_of_arrays
+    sorter = SortingSuite::SelectionSort.new
+    array1 = [4, 3, 2, 1]
+    assert_equal [1, 2, 3, 4], sorter.sort(array1)
 
+    array2 = [3, 3, 3, 3]
+    assert_equal [3, 3, 3, 3], sorter.sort(array2)
 
+    array3 = [0, -1, -10, 5, 30, 6]
+    assert_equal [-10, -1, 0, 5, 6, 30], sorter.sort(array3)
 
-    #
+    array4 = [1, 3, 2]
+    assert_equal [1, 2, 3], sorter.sort(array4)
+  end
 
-  # def test_sorts_2_element_array
-  #   sorter = SelectionSort.new
-  #   array1 = [2, 1]
-  #   assert_equal [1, 2], sorter.sort(array1)
-  #
-  #   array2 = [1, 2]
-  #   assert_equal [1, 2], sorter.sort(array2)
-  #
-  #   array3 = [2, 2]
-  #   assert_equal [2, 2], sorter.sort(array3)
-  # end
-  #
-  # def test_sorts_variety_of_arrays
-  #   sorter = SelectionSort.new
-  #   array1 = [4, 3, 2, 1]
-  #   assert_equal [1, 2, 3, 4], sorter.sort(array1)
-  #
-  #   array2 = [3, 3, 3, 3]
-  #   assert_equal [3, 3, 3, 3], sorter.sort(array2)
-  #
-  #   array3 = [0, -1, -10, 5]
-  #   assert_equal [-10, -1, 0, 5], sorter.sort(array3)
-  #
-  #   array4 = [1, 3, 2, 4]
-  #   assert_equal [1, 2, 3, 4], sorter.sort(array4)
-  # end
-  #
-  # def test_sorts_letters
-  #   sorter = SelectionSort.new
-  #   array1 = ["d", "c", "z", "r"]
-  #   assert_equal ["c", "d", "r", "z"], sorter.sort(array1)
-  #
-  #   array2 = ["d", "b", "a", "c"]
-  #   assert_equal ["a", "b", "c", "d"], sorter.sort(array2)
-  # end
-  #
-  # def test_it_returns_empty_and_1_element_arrays
-  #   sorter = SelectionSort.new
-  #   arr1 = [0]
-  #   arr2 = []
-  #   assert_equal [0], sorter.sort(arr1)
-  #   assert_equal [], sorter.sort(arr2)
-  # end
+  def test_sorts_letters
+    sorter = SortingSuite::SelectionSort.new
+    array1 = ["d", "c", "z", "r"]
+    assert_equal ["c", "d", "r", "z"], sorter.sort(array1)
+
+    array2 = ["d", "b", "a", "c"]
+    assert_equal ["a", "b", "c", "d"], sorter.sort(array2)
+  end
+
+  def test_it_returns_empty_and_1_element_arrays
+    sorter = SortingSuite::SelectionSort.new
+    arr1 = [0]
+    arr2 = []
+    assert_equal [0], sorter.sort(arr1)
+    assert_equal [], sorter.sort(arr2)
+  end
 
 end
