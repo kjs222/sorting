@@ -2,13 +2,14 @@ module SortingSuite
 
   class SelectionSort
 
-    def sort(unsorted)
+    def sort(to_sort)
       start = 0
-      while start < unsorted.length
-        unsorted = move_smallest_to_front(unsorted, find_smallest(unsorted, start), start)
+      while start < to_sort.length
+        to_sort = move_smallest_to_front(to_sort,
+                    find_smallest(to_sort, start), start)
         start += 1
       end
-      unsorted
+      to_sort
     end
 
     def find_smallest(array, start=0)

@@ -17,6 +17,28 @@ module SortingSuite
       end
     end
 
+    def merge(left, right, merged=[])
+      while !left.empty? && !right.empty?
+        if left.first <= right.first
+          push_lowest(merged, left)
+        else
+          push_lowest(merged, right)
+        end
+      end
+      while !left.empty?
+        push_lowest(merged, left)
+      end
+      while !right.empty?
+        push_lowest(merged, right)
+      end
+      merged
+    end
+
+    def push_lowest(merged,lowest)
+      merged.push(lowest.first)
+      lowest.delete_at(0)
+    end
+
     def split_point(length)
       length/2.floor
     end
@@ -37,28 +59,6 @@ module SortingSuite
       else
         sorted
       end
-    end
-
-    #refactor out repetition.  maybe with send?
-    def merge(left, right, merged=[])
-      while !left.empty? && !right.empty?
-        if left.first <= right.first
-          merged.push(left.first)
-          left.delete_at(0)
-        else
-          merged.push(right.first)
-          right.delete_at(0)
-        end
-      end
-      while !left.empty?
-        merged.push(left.first)
-        left.delete_at(0)
-      end
-      while !right.empty?
-        merged.push(right.first)
-        right.delete_at(0)
-      end
-      merged
     end
 
   end

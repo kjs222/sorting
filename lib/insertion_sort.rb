@@ -15,9 +15,9 @@ module SortingSuite
       sorted
     end
 
-    def find_insertion_point(num, sorted)
+    def find_insertion_point(insert_num, sorted)
       sorted.each_with_index do |sorted_num, index|
-        return index if num <= sorted_num
+        return index if insert_num <= sorted_num
       end
       return sorted.length
     end
