@@ -6,7 +6,7 @@ require_relative '../lib/bubble_sort.rb'
 class BubbleSortTest < MiniTest::Test
 
   def test_sorts_2_element_array
-    bubble = BubbleSort.new
+    bubble = SortingSuite::BubbleSort.new
     array1 = [2, 1]
     assert_equal [1, 2], bubble.sort(array1)
 
@@ -18,14 +18,14 @@ class BubbleSortTest < MiniTest::Test
   end
 
   def test_completes_1_bubble
-    bubble = BubbleSort.new
+    bubble = SortingSuite::BubbleSort.new
     array1 = [4, 3, 2, 1]
 
     assert_equal 4, bubble.sort(array1)[-1]
   end
 
   def test_completes_all_bubbles
-    bubble = BubbleSort.new
+    bubble = SortingSuite::BubbleSort.new
     array1 = [4, 3, 2, 1]
     assert_equal [1, 2, 3, 4], bubble.sort(array1)
 
@@ -37,13 +37,13 @@ class BubbleSortTest < MiniTest::Test
   end
 
   def test_sorts_letters
-    bubble = BubbleSort.new
+    bubble = SortingSuite::BubbleSort.new
     array1 = ["d", "c", "z", "r"]
     assert_equal ["c", "d", "r", "z"], bubble.sort(array1)
   end
 
   def test_sorts_empty
-    bubble = BubbleSort.new
+    bubble = SortingSuite::BubbleSort.new
     array1 = []
     assert_equal [], bubble.sort(array1)
   end

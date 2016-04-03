@@ -5,14 +5,13 @@ require_relative '../lib/insertion_sort.rb'
 
 class InsertionSortTest < MiniTest::Test
   def test_puts_first_element_in_sorted
-    sorter = InsertionSort.new
+    sorter = SortingSuite::InsertionSort.new
     array1 = [2]
     assert_equal [2], sorter.sort(array1)
   end
 
-
   def test_sorts_2_element_array
-    sorter = InsertionSort.new
+    sorter = SortingSuite::InsertionSort.new
     array1 = [2, 1]
     assert_equal [1, 2], sorter.sort(array1)
 
@@ -23,9 +22,8 @@ class InsertionSortTest < MiniTest::Test
     assert_equal [2, 2], sorter.sort(array3)
   end
 
-
   def test_sorts_variety_of_arrays
-    sorter = InsertionSort.new
+    sorter = SortingSuite::InsertionSort.new
     array1 = [4, 3, 2, 1]
     assert_equal [1, 2, 3, 4], sorter.sort(array1)
 
@@ -40,23 +38,20 @@ class InsertionSortTest < MiniTest::Test
   end
 
   def test_sorts_letters
-    sorter = InsertionSort.new
+    sorter = SortingSuite::InsertionSort.new
     array1 = ["d", "c", "z", "r"]
     assert_equal ["c", "d", "r", "z"], sorter.sort(array1)
 
     array2 = ["d", "b", "a", "c"]
     assert_equal ["a", "b", "c", "d"], sorter.sort(array2)
-
   end
 
   def test_it_returns_empty_and_1_element_arrays
-    sorter = InsertionSort.new
+    sorter = SortingSuite::InsertionSort.new
     arr1 = [0]
     arr2 = []
     assert_equal [0], sorter.sort(arr1)
     assert_equal [], sorter.sort(arr2)
   end
-
-
 
 end
