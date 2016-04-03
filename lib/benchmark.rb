@@ -2,6 +2,7 @@ require 'benchmark'
 require_relative 'bubble_sort'
 require_relative 'insertion_sort'
 require_relative 'merge_sort'
+require_relative 'selection_sort'
 
 module SortingSuite
 
@@ -13,42 +14,29 @@ module SortingSuite
 
     def timer(type, test_array=generate_test_array)
       sorter = type.new
-      (Module::Benchmark.realtime{sorter.sort(test_array)}.*1000).round(4)
+      seconds = Module::Benchmark.realtime{sorter.sort(test_array)}
+      milliseconds = (seconds * 1000).round(4)
     end
 
-    def time_all(test_array)
-      bubble_time = timer(SortingSuite::BubbleSort, test_array)
-      insertion_time =  timer(SortingSuite::InsertionSort, test_array)
-      merge_time =  timer(SortingSuite::MergeSort, test_array)
-      selection_time = timer(SortingSuite::SelectionSort, test_array)
-      return bubble_time, insertion_time, merge_time, selection_time
+    def time_all(test_array=generate_test_array)
+      time_hash = Hash.new
+      time_hash["BubbleSort"] = timer(SortingSuite::BubbleSort, test_array)
+      time_hash["InsertionSort"] = timer(SortingSuite::InsertionSort, test_array)
+      time_hash["MergeSort"] =  timer(SortingSuite::MergeSort, test_array)
+      time_hash["SelectionSort"]= timer(SortingSuite::SelectionSort, test_array)
+      return time_hash
     end
 
-    #consider send to consolidate fastest/slowest
-    def fastest(test_array)
-      bubble_time, insertion_time, merge_time, selection_time= time_all(test_array)
-      if bubble_time <= insertion_time && bubble_time <= merge_time &&  bubble_time <= selection_time
-        puts "BubbleSort is the fastest."
-      elsif insertion_time <= bubble_time && insertion_time <= merge_time &&  insertion_time <= selection_time
-        puts "InsertionSort is the fastest."
-      elsif merge_time <= bubble_time && merge_time <= insertion_time &&  merge_time <= selection_time
-        puts "MergeSort is the fastest"
-      else
-        puts "SelectionSort is the fastest"
-      end
+    def fastest(test_array=generate_test_array)
+      p time_hash = time_all(test_array)
+      fastest_type= time_hash.key(time_hash.values.sort[0])
+      puts "#{fastest_type} is the fastest."
     end
 
-    def slowest(test_array)
-      bubble_time, insertion_time, merge_time = time_all(test_array)
-      if bubble_time >= insertion_time && bubble_time >= merge_time &&  bubble_time >= selection_time
-        puts "BubbleSort is the slowest."
-      elsif insertion_time >= bubble_time && insertion_time >= merge_time &&  insertion_time >= selection_time
-        puts "InsertionSort is the slowest."
-      elsif merge_time >= bubble_time && merge_time >= insertion_time &&  merge_time >= selection_time
-        puts "MergeSort is the slowest"
-      else
-        puts "SelectionSort is the slowest"
-      end
+    def slowest(test_array=generate_test_array)
+      p time_hash = time_all(test_array)
+      slowest_type= time_hash.key(time_hash.values.sort[-1])
+      puts "#{slowest_type} is the slowest."
     end
 
     def generate_test_array
@@ -69,3 +57,5 @@ benchmark.time(SortingSuite::InsertionSort)
 benchmark.time(SortingSuite::MergeSort)
 benchmark.fastest([2, 8, 1, 0, 5])
 benchmark.slowest([1, 2, 3, 4, 5])
+benchmark.fastest
+benchmark.slowest
