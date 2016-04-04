@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/benchmark.rb'
+require_relative './lib/benchmark.rb'
 require 'benchmark'
 
 
-class BubbleSortTest < MiniTest::Test
+class BenchmarkSortTest < MiniTest::Test
   def test_output_format_is_correct
-    skip
+
     benchmark = SortingSuite::Benchmark.new
 
     output = benchmark.fastest([5, 4, 3, 2, 1])
@@ -24,7 +24,7 @@ class BubbleSortTest < MiniTest::Test
   end
 
   def test_fastest_and_slowest_identified
-    skip
+
     benchmark = SortingSuite::Benchmark.new
 
     timer_hash_by_time = benchmark.time_all.invert

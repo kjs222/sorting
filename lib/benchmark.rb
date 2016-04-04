@@ -56,11 +56,13 @@ module SortingSuite
 
 end
 
-#
-# benchmark = SortingSuite::Benchmark.new
-# benchmark.time(SortingSuite::InsertionSort)
-# benchmark.time(SortingSuite::MergeSort)
-# benchmark.fastest([2, 8, 1, 0, 5])
-# benchmark.slowest([1, 2, 3, 4, 5])
-# benchmark.fastest
-# benchmark.slowest
+
+benchmark = SortingSuite::Benchmark.new
+benchmark.time(SortingSuite::InsertionSort)
+benchmark.time(SortingSuite::MergeSort)
+benchmark.fastest([2, 8, 1, 0, 5])
+benchmark.slowest([1, 2, 3, 4, 5])
+benchmark.fastest
+benchmark.slowest
+p benchmark.time_all
+p benchmark.time_all([2, 8, 1, 0, 5])

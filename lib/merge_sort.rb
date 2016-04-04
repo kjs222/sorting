@@ -51,13 +51,10 @@ module SortingSuite
     end
 
     def sort_split(arr)
-      sorted = [arr[0]]
-      if arr[1] && arr[1] < sorted[0]
-        sorted.unshift(arr[1])
-      elsif arr[1]
-        sorted << arr[1]
+      if arr[1] && arr[1] < arr[0]
+        arr.reverse!
       else
-        sorted
+        arr
       end
     end
 
