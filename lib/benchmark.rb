@@ -28,15 +28,20 @@ module SortingSuite
     end
 
     def fastest(test_array=generate_test_array)
-      p time_hash = time_all(test_array)
+      time_hash = time_all(test_array)
       fastest_type= time_hash.key(time_hash.values.sort[0])
-      puts "#{fastest_type} is the fastest."
+      message = "#{fastest_type} is the fastest."
+      puts message
+      return message
+
     end
 
     def slowest(test_array=generate_test_array)
-      p time_hash = time_all(test_array)
+      time_hash = time_all(test_array)
       slowest_type= time_hash.key(time_hash.values.sort[-1])
-      puts "#{slowest_type} is the slowest."
+      message = "#{slowest_type} is the slowest."
+      puts message
+      return message
     end
 
     def generate_test_array
@@ -51,11 +56,11 @@ module SortingSuite
 
 end
 
-
-benchmark = SortingSuite::Benchmark.new
-benchmark.time(SortingSuite::InsertionSort)
-benchmark.time(SortingSuite::MergeSort)
-benchmark.fastest([2, 8, 1, 0, 5])
-benchmark.slowest([1, 2, 3, 4, 5])
-benchmark.fastest
-benchmark.slowest
+#
+# benchmark = SortingSuite::Benchmark.new
+# benchmark.time(SortingSuite::InsertionSort)
+# benchmark.time(SortingSuite::MergeSort)
+# benchmark.fastest([2, 8, 1, 0, 5])
+# benchmark.slowest([1, 2, 3, 4, 5])
+# benchmark.fastest
+# benchmark.slowest
